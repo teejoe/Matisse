@@ -83,6 +83,9 @@ public class MediaGrid extends SquareFrameLayout implements View.OnClickListener
         initCheckView();
         setImage();
         setVideoDuration();
+        if (!mPreBindInfo.mShowChecker) {
+            mCheckView.setVisibility(View.GONE);
+        }
     }
 
     public Item getMedia() {
@@ -147,13 +150,15 @@ public class MediaGrid extends SquareFrameLayout implements View.OnClickListener
         int mResize;
         Drawable mPlaceholder;
         boolean mCheckViewCountable;
+        boolean mShowChecker;
         RecyclerView.ViewHolder mViewHolder;
 
         public PreBindInfo(int resize, Drawable placeholder, boolean checkViewCountable,
-                           RecyclerView.ViewHolder viewHolder) {
+                           boolean showChecker, RecyclerView.ViewHolder viewHolder) {
             mResize = resize;
             mPlaceholder = placeholder;
             mCheckViewCountable = checkViewCountable;
+            mShowChecker = showChecker;
             mViewHolder = viewHolder;
         }
     }

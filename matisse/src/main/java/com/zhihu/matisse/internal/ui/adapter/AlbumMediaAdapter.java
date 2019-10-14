@@ -117,6 +117,7 @@ public class AlbumMediaAdapter extends
                     getImageResize(mediaViewHolder.mMediaGrid.getContext()),
                     mPlaceholder,
                     mSelectionSpec.countable,
+                    (mSelectionSpec.maxSelectable != 1 || mSelectionSpec.showPreview),
                     holder
             ));
             mediaViewHolder.mMediaGrid.bindMedia(item);
@@ -165,6 +166,9 @@ public class AlbumMediaAdapter extends
             }
         } else {
             updateSelectedItem(item, holder);
+            if (mOnMediaClickListener != null) {
+                mOnMediaClickListener.onMediaClick(null, item, holder.getAdapterPosition());
+            }
         }
     }
 
